@@ -7,6 +7,7 @@
 var FriendsData = require("../data/friends");
 var questionsData = require("../data/questions");
 
+var friendData = new FriendsData();
 
 // ===============================================================================
 // ROUTING
@@ -36,7 +37,6 @@ module.exports = function (app) {
         // It will do this by sending out the value "true" have a table
         // req.body is available since we're using the body-parser middleware
 
-        var friendData = new FriendsData();
         var found = friendData.findWith(req.body);
         friendData.add(req.body);
         console.log(friendData.friendsArray);
