@@ -17,7 +17,7 @@ module.exports = function (app) {
     // API GET Requests
     // Below code handles when users "visit" a page.
     // In each of the below cases when a user visits a link
-    // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
+    // (ex: localhost:PORT/api/admin...)
     // ---------------------------------------------------------------------------
 
     app.get("/api/survey", function (req, res) {
@@ -33,15 +33,16 @@ module.exports = function (app) {
     // ---------------------------------------------------------------------------
 
     app.post("/api/survey", function (req, res) {
-        // Note the code here. Our "server" will respond to requests and let users know if they have a table or not.
-        // It will do this by sending out the value "true" have a table
-        // req.body is available since we're using the body-parser middleware
+         // req.body is available since we're using the body-parser middleware
 
         var found = friendData.findWith(req.body);
         friendData.add(req.body);
-        console.log(friendData.friendsArray);
         res.json(found.friend);
-        // console.log(req.body);
+    });
+
+    app.get("/api/friends", function (req, res) {
+     
+        res.json(friendData.friendsArray);
     });
 
 };
